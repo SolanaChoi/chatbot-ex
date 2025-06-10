@@ -41,7 +41,8 @@ def get_retrievalQA():
     database = get_database()
     
     #프롬프트 설정
-    prompt = hub.pull('rlm/rag-prompt', api_key=LANGCHAIN_API_KEY)
+    # prompt = hub.pull('rlm/rag-prompt', api_key=LANGCHAIN_API_KEY)
+    prompt = hub.pull('solanachoi/rag-prompt', api_key=LANGCHAIN_API_KEY)
 
     #llm 모델 지정
     llm = get_llm()
