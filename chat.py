@@ -1,9 +1,8 @@
 import streamlit as st
 from llm import get_ai_message
 
-
 st.set_page_config(page_title='전세사기피해 상담 챗봇', page_icon='📰')
-st.title('🤖전세사기피해 상담 챗봇')
+st.title('👻전세사기피해 상담 챗봇')
 
 if 'message_list' not in st.session_state:
     st.session_state.message_list = []  #메시지리스트 키를 세션스테이트에 저장함
@@ -22,7 +21,9 @@ if user_question := st.chat_input(placeholder=placeholder):  #prompt창
     st.session_state.message_list.append({'role':'user','content':user_question})
 
     with st.spinner('Generating the reply...😎'):
-        ai_message = get_ai_message(user_question)  #if문 안에 있어야함 
+        # ai_message = get_ai_message(user_message=user_question, session_id='ywgw')
+
+        ai_message = get_ai_message(user_message=user_question, session_id='ywgw')
 
         with st.chat_message('ai'):
             st.write(ai_message)
