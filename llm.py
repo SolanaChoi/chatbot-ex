@@ -9,6 +9,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.chat_history import BaseChatMessageHistory, InMemoryChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_core.runnables import RunnableLambda
 
 ## 환경변수 읽어오기 
 load_dotenv()
@@ -67,7 +68,6 @@ def get_retrievalQA() -> RunnableWithMessageHistory:
     def format_docs(docs):
         return '\n\n'.join(doc.page_content for doc in docs)
 
-    from langchain_core.runnables import RunnableLambda
 
     input_str = RunnableLambda(lambda x: x['input'])
 

@@ -1,12 +1,8 @@
 #파일
 .env
-chat-01.py
-test.py
-chat-02-FORSTUDY.py
-*-before.py
-
 
 
 #폴더
+secret/
 __pycache__/
 *.pyc
