@@ -1,7 +1,6 @@
 import uuid
 import streamlit as st
-from llm import get_ai_message
-
+from llm import stream_ai_message
 
 st.set_page_config(page_title='전세사기피해 상담 챗봇', page_icon='📰')
 st.title('🎈전세사기피해 상담 챗봇')
@@ -22,7 +21,7 @@ else:
 if 'session_id' not in st.session_state:
     st.session_state.session_id = session_id
 
-# Streamlit 내부 세션: message_list 초기화 message_list라는 기억이 없으면, 빈리스트로 생성 
+# Streamlit 내부 세션: 메세지 리스트 초기화 message_list라는 기억이 없으면, 빈리스트로 생성 
 if 'message_list' not in st.session_state:
     st.session_state.message_list = []
 
@@ -43,9 +42,9 @@ if user_question := st.chat_input(placeholder=placeholder):  #prompt창
 # AI메시지 = get_ai_message(user_message=user_question, session_id='ywgw')
     with st.spinner('Generating the reply...😎'):
         session_id = st.session_state.session_id
-        ai_message = get_ai_message(user_message=user_question, session_id='ywgw')
+        ai_message = stream_ai_message(user_message=user_question, session_id='ywgw')
 
         with st.chat_message('ai'):
-            ai_message = st.write(ai_message)
+            ai_message = st.write_stream(ai_message)
         st.session_state.message_list.append({'role':'ai','content':ai_message})
 
