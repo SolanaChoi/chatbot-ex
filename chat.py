@@ -46,6 +46,6 @@ if user_question := st.chat_input(placeholder=placeholder):  #prompt창
         ai_message = get_ai_message(user_message=user_question, session_id='ywgw')
 
         with st.chat_message('ai'):
-            ai_message = st.write_stream(ai_message)
+            ai_message = st.write(ai_message)
         st.session_state.message_list.append({'role':'ai','content':ai_message})
 
